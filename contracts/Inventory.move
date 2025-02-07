@@ -2,6 +2,9 @@ module SupplyChain {
     use 0x1::Signer;
     use 0x1::Vector;
     use 0x1::Option;
+    use SupplyChain::SupplierModule::{Supplier};
+    use SupplyChain::OrderModule::{Order};
+    use SupplyChain::PaymentModule::{Payment};
 
     struct InventoryItem {
         id: u64,
@@ -10,29 +13,6 @@ module SupplyChain {
         supplier: address,
         price: u64,
         expiration_date: u64,
-    }
-
-    struct Supplier {
-        id: u64,
-        name: vector<u8>,
-        address: address,
-    }
-
-    struct Order {
-        id: u64,
-        item_id: u64,
-        quantity: u64,
-        total_price: u64,
-        buyer: address,
-        status: vector<u8>,
-    }
-
-    struct Payment {
-        id: u64,
-        order_id: u64,
-        amount: u64,
-        payer: address,
-        status: vector<u8>,
     }
 
     resource struct Inventory {
